@@ -1,0 +1,32 @@
+
+<input
+  type="text"
+  id="poke-filter"
+  placeholder="Search"
+  maxlength="20"
+  [(ngModel)]="nameFilter"
+>
+
+<img 
+class="selected-pkm"
+*ngIf="selectedPkm !== null"
+[src]="pkmSprite"
+>
+
+<select (change)="0">
+  <option value="1">Classe 1</option>
+  <option value="2">Classe 2</option>
+  <option value="3">Classe 3</option>
+</select>
+
+<ul class="poke-list">
+  {{nameFilter}}
+  <li
+    *ngFor="let pokemon of pokemonList"
+    class="poke-list-item"
+    (mouseenter)="selectPokemon(pokemon)"
+  >
+    <img src="//serebii.net/pokedex-xy/icon/{{ pokemon.number | number: '3.0-0'}}.png">
+    <span>{{ pokemon.number | number: '3.0-0'}} - {{ pokemon.name }}</span>
+  </li>
+</ul>
